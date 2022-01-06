@@ -1,0 +1,370 @@
+1.
+vector<vector<string> > Anagrams(vector<string>&list) {
+        int n=list.size();
+        vector<vector<string>>ans;
+        vector<pair<string, int>>v;
+        
+        for(int i=0; i<n; i++){
+            string s=list[i];
+            sort(s.begin(), s.end());
+            
+            v.push_back({s, i});
+        }
+        
+        sort(v.begin(), v.end());
+        
+        int j=0;
+        vector<string>tmp;
+        tmp.push_back(list[v[j++].second]);
+        
+        while(j<n){
+           if(v[j].first==v[j-1].first){
+               tmp.push_back(list[v[j].second]);
+               j++;
+           }
+           
+           else{
+               ans.push_back(tmp);
+               tmp.clear();
+               tmp.push_back(list[v[j].second]);
+               j++;
+           }
+        }
+        
+        ans.push_back(tmp);
+        
+       return ans; 
+        //code here
+    }
+
+2.
+int doOverlap(int L1[], int R1[], int L2[], int R2[]) {
+        //if(L1[0]==R1[0] || L1[1]==R1[1] || L2[0]==R2[0] || L2[1]==R2[1])
+        //return 0;
+        
+        if(R2[1]>L1[1] || R1[1]>L2[1] || R1[0]<L2[0] ||R2[0]<L1[0])
+        return 0;
+        
+        return 1;
+    }
+
+3.
+int countSubArrayProductLessThanK(const vector<int>& a, int n, long long k) {
+        int ans=0, j=0;
+        long long prd=1;
+        
+        for(int i=0; i<n; i++){
+            prd=prd*a[i];
+            
+            if(prd>k){
+                while(j<i){
+                    prd=prd/a[j];
+                    if(prd<k){
+                        ans=ans+i-j;
+                        j++;
+                        break;
+                    }
+                    j++;
+                }
+            }
+            
+            else{
+                ans=ans+i-j+1;
+            }
+        }
+        
+        return ans;
+    }
+
+4.
+string encode(string src)
+{     
+  int n=src.length(), i=0, j=1;
+  string ans="";
+  
+  while(j<n){
+      if(src[j]==src[i])
+      j++;
+      
+      else{
+          ans=ans+src[i]+to_string(j-i);
+          i=j;
+          j++;
+      }
+  }
+  ans=ans+src[i]+to_string(j-i);
+  
+    return ans;
+}
+
+5.
+ull getNthUglyNo(int n) {
+	   ull ugly[n];
+	   ugly[0]=1;
+	   ull l=0, m=0, n1=0, a=2, b=3, c=5, next;
+	       // code here
+	   for(int i=1; i<n; i++){
+	       next=min(min(a, b), c);
+	       ugly[i]=next;
+	       
+	       if(next==a){
+	           l++;
+	           a=ugly[l]*2;
+	       }
+	       
+	       if(next==b){
+	           m++;
+	           b=ugly[m]*3;
+	       }
+	       
+	       if(next==c){
+	           n1++;
+	           c=ugly[n1]*5;
+	       }
+	   }
+	   
+	   
+	   return ugly[n-1]; 
+	}
+
+6.
+string gcdOfStrings(string str1, string str2) {
+        if(str1+str2 == str2+str1)
+            return str1.substr(0, gcd(size(str1), size(str2)));
+        
+        return "";
+    }
+
+7.
+int findPosition(int N , int M , int K) {
+        M=M % N;
+        int pos=K+M-1;
+        if(pos==0)
+        return N;
+        
+        if(pos>N)
+        return pos%N;
+        
+        return pos;// code here
+    }
+
+8.
+string decodedString(string s){
+        stack<char>st;
+       string ans;
+       for(int i=0;i<s.size();i++){
+           if(s[i]!=']') st.push(s[i]);
+           else{
+               string temp;
+               while(!st.empty() && st.top()!='['){
+                  temp = st.top() + temp;
+                st.pop();
+               }
+               st.pop();
+            string num;
+            while (!st.empty() && isdigit(st.top())) {
+                num = st.top() + num;
+                st.pop();
+            }
+            int number = stoi(num);
+            string repeat;
+            for (int j = 0; j < number; j++)
+                repeat += temp;
+            for (char c : repeat)
+                st.push(c);
+           }
+           
+       }
+       string res;
+    while (!st.empty()) {
+        res = st.top() + res;
+        st.pop();
+    }
+    return res;
+  }
+
+9.
+string printMinNumberForPattern(string S){
+        stack<char>st;
+        string ans="";
+        char c='1';
+        
+        int n=S.length();
+        for(int i=0; i<n; i++){
+            if(S[i]=='D'){
+                st.push(c);
+                c++;
+            }
+            
+            else{
+               st.push(c);
+               c++;
+               while(!st.empty())
+               {
+                   ans=ans+st.top();
+                   st.pop();
+               }
+            }
+        }
+        st.push(c);
+        while(!st.empty())
+            {
+                   ans=ans+st.top();
+                   st.pop();
+            }
+        
+        return ans;
+    }
+
+10.
+int main() {
+    int n, m;
+    cin>>n>>m;
+    
+	int arr[n];
+	for(int i=0; i<n; i++)
+	cin>>arr[i];
+	
+	priority_queue<int, vector<int>, greater<int>>pq;
+	
+	for(int i=0; i<n; i++){
+	    if(i<m)
+	    pq.push(arr[i]);
+	    
+	    else if(arr[i]>pq.top()){
+	       pq.pop();
+	       pq.push(arr[i]);
+	    }
+	}
+	
+	for(int i=0; i<m; i++)
+	{
+	    cout<<pq.top()<<" ";
+	    pq.pop();
+	}
+	                 // your code goes here
+	return 0;
+}
+
+11.
+int *findTwoElement(int *V, int n) {
+        long long sum = 0;
+       long long squareSum = 0;
+       long long temp;
+       for (int i = 0; i < n; i++) {
+           temp = V[i];
+           sum += temp;
+           sum -= (i + 1);
+           squareSum += (temp * temp);
+           squareSum -= ((long long)(i + 1) * (long long)(i + 1));
+       }
+       // sum = A - B
+       // squareSum = A^2 - B^2 = (A - B)(A + B)
+       // squareSum / sum = A + B
+       squareSum /= sum;
+
+       // Now we have A + B and A - B. Lets figure out A and B now. 
+       int A = (int) ((sum + squareSum) / 2);
+       int B = squareSum - A;
+
+       int *ret=new int[2];
+       ret[0]=A;
+       ret[1]=B;
+       return ret;
+    }
+
+12.
+long long squaresInChessBoard(long long N) {
+        long long ans;
+        ans=(N*(N+1))/2;
+        ans=(ans*(2*N+1))/3;
+        
+        return ans;
+    }
+
+13.
+string decodedString(string s){
+        // code here
+        stack<char>st;
+       string ans;
+       for(int i=0;i<s.size();i++){
+           if(s[i]!=']') st.push(s[i]);
+           else{
+               string temp;
+               while(!st.empty() && st.top()!='['){
+                  temp = st.top() + temp;
+                st.pop();
+               }
+               st.pop();
+            string num;
+            while (!st.empty() && isdigit(st.top())) {
+                num = st.top() + num;
+                st.pop();
+            }
+            int number = stoi(num);
+            string repeat;
+            for (int j = 0; j < number; j++)
+                repeat += temp;
+            for (char c : repeat)
+                st.push(c);
+           }
+           
+       }
+       string res;
+    while (!st.empty()) {
+        res = st.top() + res;
+        st.pop();
+    }
+    return res;
+    
+    }
+
+14.
+int minSubArrayLen(int target, vector<int>& nums) {
+        int n=nums.size(), i=0, j=0, sum=0, ans=INT_MAX;
+        
+        while(j<n){
+            sum=sum+nums[j];
+            while(sum>=target){
+                ans=min(ans, j-i+1);
+                sum=sum-nums[i];
+                i++;
+            }
+            
+            j++;
+        }
+    
+        if(ans==INT_MAX)
+            return 0;
+        
+    return ans;
+    }
+
+15.
+bool canPair(vector<int> arr, int k) {
+         unordered_map<int,int> mp;
+        
+        int n = arr.size();
+        if(n % 2 != 0) return false;
+        
+        for(int i=0;i<n;i++){
+            mp[arr[i] % k]++;
+        }
+        
+        for(int i=0;i<n;i++){
+            
+            int rem1 = arr[i] % k;
+            
+            if(rem1 == 0){
+                if(mp[rem1] % 2 != 0) return false;
+            }
+            else{
+                int rem2 = k - rem1;
+                if(rem1 == rem2 and mp[rem1] % 2 != 0) return false;
+                if(mp.find(rem2) == mp.end()) return false;
+                if(mp[rem1] != mp[rem2]) return false;
+            }
+            
+        }
+        return true;
+    }

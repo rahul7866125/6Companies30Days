@@ -1,0 +1,204 @@
+1. 
+Print Anagrams Together 
+Medium Accuracy: 56.1% Submissions: 23997 Points: 4
+Given an array of strings, return all groups of strings that are anagrams. 
+The groups must be created in order of their appearance in the original array. Look at the sample case for clarification.
+
+Example 1:
+
+Input:
+N = 5
+words[] = {act,god,cat,dog,tac}
+Output: 
+god dog
+act cat tac
+Explanation:
+There are 2 groups of
+anagrams "god", "dog" make group 1.
+"act", "cat", "tac" make group 2.
+
+2.
+Overlapping rectangles 
+Easy Accuracy: 33.51% Submissions: 6970 Points: 2
+Given two rectangles, find if the given two rectangles overlap or not. 
+A rectangle is denoted by providing the x and y coordinates of two points: the left top corner and the right bottom corner of the rectangle. 
+Two rectangles sharing a side are considered overlapping. 
+(L1 and R1 are the extreme points of the first rectangle and L2 and R2 are the extreme points of the second rectangle).
+
+Note: It may be assumed that the rectangles are parallel to the coordinate axis.
+
+rectanglesOverlap
+
+Example 1:
+
+Input:
+L1=(0,10)
+R1=(10,0)
+L2=(5,5)
+R2=(15,0)
+Output:
+1
+Explanation:
+The rectangles overlap.
+
+3.
+Count the subarrays having product less than k 
+Hard Accuracy: 56.01% Submissions: 5376 Points: 8
+Given an array of positive numbers, the task is to find the number of possible contiguous subarrays having product less than a given number k.
+
+Example 1:
+
+Input : 
+n = 4, k = 10
+a[] = {1, 2, 3, 4}
+Output : 
+7
+Explanation:
+The contiguous subarrays are {1}, {2}, {3}, {4} 
+{1, 2}, {1, 2, 3} and {2, 3} whose count is 7.
+
+4.
+Run Length Encoding 
+Easy Accuracy: 33.12% Submissions: 33627 Points: 2
+Given a string, Your task is to  complete the function encode that returns the run length encoded string for the given string.
+eg if the input string is “wwwwaaadexxxxxx”, then the function should return “w4a3d1e1x6″.
+You are required to complete the function encode that takes only one argument the string which is to be encoded and returns the encoded string.
+
+Example 1:
+
+Input:
+str = aaaabbbccc
+Output: a4b3c3
+Explanation: a repeated 4 times
+consecutively b 3 times, c also 3
+times.
+
+5.
+Ugly Numbers 
+Hard Accuracy: 50.0% Submissions: 19694 Points: 8
+Ugly numbers are numbers whose only prime factors are 2, 3 or 5. The sequence 1, 2, 3, 4, 5, 6, 8, 9, 10, 12, 15, … shows the first 11 ugly numbers. 
+By convention, 1 is included. Write a program to find Nth Ugly Number.
+
+Example 1:
+
+Input:
+N = 10	
+Output: 12
+Explanation: 10th ugly number is 12.
+
+6.
+For two strings s and t, we say "t divides s" if and only if s = t + ... + t (i.e., t is concatenated with itself one or more times).
+
+Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.
+
+ 
+
+Example 1:
+
+Input: str1 = "ABCABC", str2 = "ABC"
+Output: "ABC"
+
+7.
+M items are to be delivered in a circle of size N. Find the position where the M-th item will be delivered if we start from a given position K. 
+Note that items are distributed at adjacent positions starting from K.
+
+ 
+
+Example 1:
+
+Input:
+N = 5, M = 2, K = 1
+Output:
+2
+Explanation:
+If we start from 1st position, the
+2nd item will land at the 2nd position.
+
+8.
+An encoded string (s) is given, the task is to decode it. The pattern in which the strings were encoded were as follows
+original string: abbbababbbababbbab 
+encoded string : 3[a3[b]1[ab]]
+
+Example 1:
+
+Input: s = 1[b]
+Output: b
+Explaination: 'b' is present only one time.
+
+9.
+Given a pattern containing only I's and D's. I for increasing and D for decreasing.
+Devise an algorithm to print the minimum number following that pattern.
+Digits from 1-9 and digits can't repeat.
+
+ 
+
+Example 1:
+
+Input:
+D
+Output:
+21
+Explanation:
+D is meant for decreasing,
+So we choose the minimum number
+among 21,31,54,87,etc.
+
+10.
+Find max 10 numbers in a list having 10M entries.
+
+11.
+Given an unsorted array Arr of size N of positive integers. One number 'A' from set {1, 2, …N} is missing and one number 'B' occurs twice in array. Find these two numbers.
+
+Example 1:
+
+Input:
+N = 2
+Arr[] = {2, 2}
+Output: 2 1
+Explanation: Repeating number is 2 and 
+smallest positive missing number is 1.
+
+12.
+Find total number of Squares in a N*N cheesboard.
+
+Input:
+N = 2
+Output:
+5
+Explanation:
+A 2*2 chessboard has 5 squares.
+4 1*1 squares and a 2*2 square.
+
+13.
+An encoded string (s) is given, the task is to decode it. The pattern in which the strings were encoded were as follows
+original string: abbbababbbababbbab 
+encoded string : 3[a3[b]1[ab]]
+
+Example 1:
+
+Input: s = 1[b]
+Output: b
+Explaination: 'b' is present only one time.
+
+14.
+Given an array of positive integers nums and a positive integer target, return the minimal length of a contiguous subarray [numsl, numsl+1, ..., numsr-1, numsr] of which the sum is greater than or equal to target. If there is no such subarray, return 0 instead.
+
+ 
+
+Example 1:
+
+Input: target = 7, nums = [2,3,1,2,4,3]
+Output: 2
+Explanation: The subarray [4,3] has the minimal length under the problem constraint.
+
+15.
+Given an array of integers and a number k, write a function that returns true if given array can be divided into pairs such that sum of every pair is divisible by k.
+ 
+
+Example 1 :
+
+Input : arr = [9, 5, 7, 3], k = 6
+Output: True
+Explanation: {(9, 3), (5, 7)} is a 
+possible solution. 9 + 3 = 12 is divisible
+by 6 and 7 + 5 = 12 is also divisible by 6.	
